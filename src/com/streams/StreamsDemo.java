@@ -128,9 +128,14 @@ public class StreamsDemo {
         System.out.println(op.get());
 
         // 13. min(Comparator)
-        
+        Comparator<Integer> cmp = (a,b) -> Integer.compare(a, b);
+        Optional<Integer> minVal = toCheckCount.stream().min(cmp);
+        System.out.println(minVal);
 
         // 14. max(Comparator)
+        Optional<Integer> maxVal = toCheckCount.stream().max(cmp);
+        System.out.println(maxVal);
 
+        // 15. 
     }
 }
