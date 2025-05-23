@@ -164,5 +164,20 @@ public class StreamsDemo {
         // 20. Collectors.groupingBy()
         Map<String, List<Integer>> groupByOddEven = toCheckCount.stream().collect(Collectors.groupingBy(n-> n%2 == 0 ? "Even" : "Odd"));
         System.out.println(groupByOddEven);
+
+        Map<String, Long> counts = toCheckCount.stream()
+                                            .collect(Collectors.groupingBy(n -> (n % 2 == 0) ? "Even" : "Odd", Collectors.counting()));
+        System.out.println(counts);
+
+        // 21. Collectors.partitioningBy()
+        Map<Boolean, List<Integer>> partitionedByEvenOdd = toCheckCount.stream()
+                            .collect(Collectors.partitioningBy(n->n%2==0));
+        System.out.println(partitionedByEvenOdd);
+
+        Map<Boolean, Long> partitionCounts = toCheckCount.stream()
+                            .collect(Collectors.partitioningBy(n->n%2==0, Collectors.counting()));
+        System.out.println(partitionCounts);
+        
+        
     }
 }
