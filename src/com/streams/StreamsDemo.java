@@ -160,5 +160,9 @@ public class StreamsDemo {
         // 19. Collectors.toMap()
         Map<String, Integer> newMap = toCheckCount.stream().collect(Collectors.toMap(n-> "Key-" + n, n-> n));
         System.out.println(newMap);
+
+        // 20. Collectors.groupingBy()
+        Map<String, List<Integer>> groupByOddEven = toCheckCount.stream().collect(Collectors.groupingBy(n-> n%2 == 0 ? "Even" : "Odd"));
+        System.out.println(groupByOddEven);
     }
 }
