@@ -178,6 +178,12 @@ public class StreamsDemo {
                             .collect(Collectors.partitioningBy(n->n%2==0, Collectors.counting()));
         System.out.println(partitionCounts);
         
-        
+        // 22. Collectors.joining()
+        String s = toCheckCount.stream().map(n-> String.valueOf(n)).collect(Collectors.joining());
+        System.out.println(s);
+
+        // 23. Collectors.averagingInt()
+        double average = toCheckCount.stream().collect(Collectors.averagingInt(n->n));
+        System.out.println(average);
     }
 }
