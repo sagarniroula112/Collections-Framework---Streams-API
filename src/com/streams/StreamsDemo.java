@@ -136,6 +136,12 @@ public class StreamsDemo {
         Optional<Integer> maxVal = toCheckCount.stream().max(cmp);
         System.out.println(maxVal);
 
-        // 15. 
+        // 15. findFirst()
+        Optional<Integer> firstOne = toCheckCount.stream().findFirst();
+        System.out.println(firstOne);
+
+        // 16. findAny()
+        Optional<Integer> anyOne = toCheckCount.stream().findAny();
+        System.out.println(anyOne);
     }
 }
