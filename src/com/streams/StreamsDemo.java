@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -143,5 +145,20 @@ public class StreamsDemo {
         // 16. findAny()
         Optional<Integer> anyOne = toCheckCount.stream().findAny();
         System.out.println(anyOne);
+
+        
+        // FOR COLLECTORS (used with collect())
+
+        // 17. Collectors.toList()
+        List<Integer> newList = toCheckCount.stream().collect(Collectors.toList());
+        System.out.println(newList);
+
+        // 18. Collectors.toSet()
+        Set<Integer> newSetList = toCheckCount.stream().collect(Collectors.toSet());
+        System.out.println(newSetList);
+
+        // 19. Collectors.toMap()
+        Map<String, Integer> newMap = toCheckCount.stream().collect(Collectors.toMap(n-> "Key-" + n, n-> n));
+        System.out.println(newMap);
     }
 }
