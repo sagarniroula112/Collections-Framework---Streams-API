@@ -109,8 +109,23 @@ public class PracticeTask {
 
         Map<Boolean, List<Employee>> partitionedGroups = employees.stream().collect(Collectors.partitioningBy(e -> e.getSalary() > 50000));
         System.out.println(partitionedGroups);
+        System.out.println("-----------------------------------------------------------");
 
         // 7. Counting and Averaging
+
+        Map<String, Long> countByAge = employees.stream().collect(Collectors.groupingBy(e -> {
+            if(e.getAge() < 30) return "Young";
+            else if(e.getAge() >= 30 && e.getAge() <= 50) return "Mid";
+            else return "Senior";
+        }, Collectors.counting()));
+
+        System.out.println(countByAge);
+
+        double averageSalary = employees.stream().collect(Collectors.averagingDouble(e->e.getSalary()));
+        System.out.println(averageSalary);
+
+        // 8. Joining
+
         
     }
 }
