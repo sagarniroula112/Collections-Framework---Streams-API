@@ -57,6 +57,12 @@ public class PracticeTask {
 
         // 3. Transformation with map()
 
-        
+        List<String> allUpperNames = allEmpNames.stream().map(name -> name.toUpperCase()).toList();
+        System.out.println(allUpperNames);
+
+        List<Double> doubledSalary = employees.stream().map(e -> e.getSalary() * 2).toList();
+        System.out.println(doubledSalary);
+
+        projectsList.stream().map(l -> l + " - Project Member").toList().forEach(i->System.out.println(i));
     }
 }
