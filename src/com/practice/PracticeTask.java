@@ -2,6 +2,7 @@ package com.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -64,5 +65,17 @@ public class PracticeTask {
         System.out.println(doubledSalary);
 
         projectsList.stream().map(l -> l + " - Project Member").toList().forEach(i->System.out.println(i));
+
+        // 4. Sorting
+        
+        Comparator<Employee> comp = Comparator.comparing(e->e.getAge());
+        employees.stream().sorted(comp).forEach(e->System.out.println(e));
+
+        // Comparator<List<String>> comp1 = Comparator.comparing(i->);
+        employees.stream().flatMap(e -> e.getProjects().stream()).distinct().sorted().forEach(i->System.out.println(i));
+
+        // 5. Reduction and Aggregation
+
+        
     }
 }
