@@ -126,6 +126,12 @@ public class PracticeTask {
 
         // 8. Joining
 
-        
+        String joinedNames = employees.stream().map(e->e.getName()).collect(Collectors.joining(", "));
+        System.out.println(joinedNames);
+
+        String projectNames = employees.stream().flatMap(e-> e.getProjects().stream()).distinct().collect(Collectors.joining("; "));
+        System.out.println(projectNames);
+
+        // REVISE THIS flatMap() when required. It is important.
     }
 }
