@@ -3,8 +3,13 @@ package com.practice;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class PracticeTask {
@@ -76,6 +81,36 @@ public class PracticeTask {
 
         // 5. Reduction and Aggregation
 
+        Optional<Double> sum = employees.stream().map(e -> e.getSalary()).reduce((c,e)->c+e);
+        System.out.println(sum);
+        
+        Comparator<Employee> comp2 = Comparator.comparing(e->e.getSalary());
+        Optional<Employee> emp = employees.stream().min(comp2);
+        System.out.println(emp);
+
+        Comparator<Employee> comp3 = Comparator.comparing(e->e.getAge());
+        Optional<Employee> empAge = employees.stream().max(comp3);
+        System.out.println(empAge);
+
+        // 6. Collectors Usage
+
+        LinkedHashSet<Employee> linkedEmployees = employees.stream().collect(Collectors.toCollection(LinkedHashSet::new));
+        System.out.println(linkedEmployees);
+        System.out.println("-----------------------------------------------------------");
+
+        Map<String, List<Employee>> groupedByAge = employees.stream().collect(Collectors.groupingBy(e -> {
+            if(e.getAge() < 30) return "Young";
+            else if(e.getAge() >= 30 && e.getAge() <= 50) return "Mid";
+            else return "Senior";
+        }));
+
+        System.out.println(groupedByAge);
+        System.out.println("-----------------------------------------------------------");
+
+        Map<Boolean, List<Employee>> partitionedGroups = employees.stream().collect(Collectors.partitioningBy(e -> e.getSalary() > 50000));
+        System.out.println(partitionedGroups);
+
+        // 7. Counting and Averaging
         
     }
 }
